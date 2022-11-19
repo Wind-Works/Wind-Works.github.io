@@ -1,14 +1,167 @@
 :root {
   --color1: rgba(125, 242, 255, 0.459);
   --color2: rgba(255, 0, 230, 0.418);
-  --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
-  --pika1: #5653ff;
-  --pika2: rgba(255, 0, 230, 0.418);
-  --pikafront: url(/img/nidalee-nocrop.png);
-  --maskimage: url(/img/mask.png);
+  --nida1: #5653ff;
+  --nida2: rgba(255, 0, 230, 0.418);
+  --nidalee: url(/img/nidalee.png);
+  --gem-glow-fx: url(/img/glow.png);
+  --maskimage: url(/img/sky-mask.png);
   --hovermaskimage: url(/img/hover-mask-throughhair.png);
-  --zoom: 140%;
-  --space: url(/img/skydark.png); }
+  --mist: url(/img/mist.png);
+  --mist-glow: url(/img/smoke-glow.png);
+  --zoom: 130%;
+  --space: url(/img/sky.png);
+  --starsone: url(/img/starsone.png);
+  --starstwo: url(/img/starstwo.png); }
+
+.foreground {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-position: 50% 50%;
+  background-size: cover; }
+
+.jewels {
+  background-image: var(--gem-glow-fx);
+  mix-blend-mode: color-dodge;
+  mix-blend-mode: plus-lighter;
+  filter: brightness(3);
+  animation: opacity-pulse 5s ease-in infinite; }
+
+.mist-glow {
+  background-image: var(--mist-glow);
+  mix-blend-mode: overlay;
+  animation: opacity-pulse 2s ease-in infinite; }
+
+.mist, .mist2, .mist3 {
+  background-image: var(--mist);
+  width: 2589px;
+  opacity: 0.1;
+  mix-blend-mode: screen; }
+
+.mist {
+  background-position-x: -1726px;
+  opacity: 0.6;
+  transform: scaleX(-1);
+  animation: mist1 90s linear infinite; }
+
+.mist2 {
+  animation: mist2 90s linear infinite;
+  animation-delay: 1s; }
+
+.mist3 {
+  mix-blend-mode: screen;
+  mix-blend-mode: plus-lighter;
+  animation: mist3 90s linear infinite;
+  animation-delay: 2s; }
+
+@keyframes mist1 {
+  0% {
+    background-position-x: 0px;
+    background-size: 100%; }
+  50% {
+    background-size: 110%; }
+  100% {
+    background-position-x: 1726px;
+    background-size: 100%; } }
+
+@keyframes mist2 {
+  0% {
+    background-position-x: 0px;
+    background-size: 100%;
+    opacity: 0.1; }
+  50% {
+    background-size: 110%;
+    opacity: 0.3; }
+  100% {
+    background-position-x: -1726px;
+    background-size: 100%;
+    opacity: 0.1; } }
+
+@keyframes mist3 {
+  0% {
+    background-position-x: 0px;
+    background-size: 100%;
+    opacity: 0.1; }
+  66% {
+    background-size: 110%;
+    opacity: 0.3; }
+  100% {
+    background-position-x: -1726px;
+    background-size: 100%;
+    opacity: 0.1; } }
+
+@keyframes opacity-pulse {
+  0% {
+    opacity: 0.2; }
+  20% {
+    opacity: 0.8; }
+  30% {
+    opacity: 0.4; }
+  50% {
+    opacity: 1; }
+  70% {
+    opacity: 0.4; }
+  80% {
+    opacity: 0.8; }
+  100% {
+    opacity: 0.2; } }
+
+@keyframes scrolling-bg {
+  0% {
+    background-position-x: 0px; }
+  100% {
+    background-position-x: -1726px; } }
+
+.sky {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: screen;
+  background-position-x: 50%;
+  background-position-y: 40%;
+  background-size: var(--zoom);
+  -webkit-mask-position: 50% 50%;
+  -webkit-mask-image: var(--maskimage);
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: 50% 50%;
+  mask-image: var(--maskimage);
+  mask-size: cover;
+  mask-repeat: no-repeat; }
+
+.one {
+  background-image: var(--starsone);
+  filter: brightness(0.75);
+  animation: glow-pulse 0.75s ease-in-out infinite; }
+
+.two {
+  background-image: var(--starstwo);
+  filter: brightness(0.5);
+  animation: glow-pulse-two .5s linear infinite; }
+
+@keyframes glow-pulse {
+  0% {
+    filter: brightness(0.75); }
+  50% {
+    filter: brightness(2); }
+  100% {
+    filter: brightness(0.75); } }
+
+@keyframes glow-pulse-two {
+  0% {
+    opacity: 0.5;
+    filter: brightness(2); }
+  50% {
+    opacity: 1;
+    filter: brightness(1); }
+  100% {
+    opacity: 0.5;
+    filter: brightness(2); } }
 
 .card {
   width: 71.5vw;
@@ -38,10 +191,10 @@
 .card:hover {
   box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1), 7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5); }
 
-.card.pika {
-  --color1: var(--pika1);
-  --color2: var(--pika2);
-  --front: var(--pikafront); }
+.card.nida {
+  --color1: var(--nida1);
+  --color2: var(--nida2);
+  --front: var(--nidalee); }
 
 .card:before,
 .card:after {
@@ -74,7 +227,7 @@
   mask-image: var(--maskimage);
   mask-size: cover;
   mask-repeat: no-repeat;
-  background-image: url("https://assets.codepen.io/13471/sparkles.gif"), var(--space), linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
+  background-image: url(/img/sparkle.gif), var(--space), linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
   background-position: 50% 50%;
   background-size: var(--zoom);
   background-blend-mode: overlay;
@@ -82,7 +235,7 @@
   filter: brightness(1) contrast(1);
   transition: all .33s ease;
   mix-blend-mode: screen;
-  opacity: .75; }
+  opacity: .95; }
 
 .card.active:after,
 .card:hover:after {
