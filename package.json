@@ -1,0 +1,26 @@
+{
+  "name": "index",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch ./ -o ./",
+    "start": "npx parcel index.html",
+    "prebuild-dev": "shx rm -rf dist/*",
+    "build-dev": "npx parcel build ./index.html --no-optimize --public-url ./",
+    "prebuild": "shx rm -rf dist/*",
+    "build": "npx parcel build ./index.html --public-url ./",
+    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^8.0.0",
+    "shx": "^0.3.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "parcel": "^2.8.0"
+  }
+}
