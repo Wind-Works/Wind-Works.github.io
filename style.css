@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import "/animations.css";
 :root {
   --color1: rgba(125, 242, 255, 0.459);
@@ -36,15 +43,23 @@
   background-position: 50% 50%;
   background-size: var(--zoom);
   background-repeat: no-repeat;
+  -webkit-mask-position: 50% 50%;
+  -webkit-mask-image: var(--maskimage);
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
   mask-position: 50% 50%;
   mask-image: var(--maskimage);
   mask-size: cover;
   mask-repeat: no-repeat;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   will-change: background-position; }
 
 .card:hover .background,
 .card:hover .black-hole {
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none; }
 
 .black-hole {
@@ -56,50 +71,66 @@
   top: 48.63%;
   mix-blend-mode: screen;
   mix-blend-mode: plus-lighter;
-  filter: brightness(2);
+  -webkit-filter: brightness(2);
+          filter: brightness(2);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   will-change: background-position; }
 
 .disc {
   background-image: var(--disc);
   background-size: cover;
-  animation: rotate-bg-2d 0.2s linear infinite, opacity-pulse 5s linear infinite alternate; }
+  -webkit-animation: rotate-bg-2d 0.2s linear infinite, opacity-pulse 5s linear infinite alternate;
+          animation: rotate-bg-2d 0.2s linear infinite, opacity-pulse 5s linear infinite alternate; }
 
 .d2 {
   height: 55px;
   width: 55px;
-  animation: rotate-bg-2d 0.65s linear infinite, opacity-pulse 6s linear infinite alternate; }
+  -webkit-animation: rotate-bg-2d 0.65s linear infinite, opacity-pulse 6s linear infinite alternate;
+          animation: rotate-bg-2d 0.65s linear infinite, opacity-pulse 6s linear infinite alternate; }
 
 .d3 {
   height: 80px;
   width: 80px;
-  animation: rotate-bg-2d 0.95s linear infinite, opacity-pulse 8s linear infinite alternate; }
+  -webkit-animation: rotate-bg-2d 0.95s linear infinite, opacity-pulse 8s linear infinite alternate;
+          animation: rotate-bg-2d 0.95s linear infinite, opacity-pulse 8s linear infinite alternate; }
 
 .d4 {
   height: 100px;
   width: 100px;
-  animation: rotate-bg-2d 2.5s linear infinite, opacity-pulse 11s linear infinite alternate; }
+  -webkit-animation: rotate-bg-2d 2.5s linear infinite, opacity-pulse 11s linear infinite alternate;
+          animation: rotate-bg-2d 2.5s linear infinite, opacity-pulse 11s linear infinite alternate; }
 
 .cloud {
-  filter: brightness(2.5) invert(46%) sepia(50%) saturate(2676%) hue-rotate(238deg) contrast(101%);
+  -webkit-filter: brightness(2.5) invert(46%) sepia(50%) saturate(2676%) hue-rotate(238deg) contrast(101%);
+          filter: brightness(2.5) invert(46%) sepia(50%) saturate(2676%) hue-rotate(238deg) contrast(101%);
   height: 231px;
   width: 231px;
   background-image: var(--disc-cloud);
-  animation: rotate-bg-2d 5.5s linear infinite, opacity-pulse 11s linear infinite alternate; }
+  -webkit-animation: rotate-bg-2d 5.5s linear infinite, opacity-pulse 11s linear infinite alternate;
+          animation: rotate-bg-2d 5.5s linear infinite, opacity-pulse 11s linear infinite alternate; }
 
 .c2 {
-  animation: rotate-bg-2d-2 5.5s linear infinite, opacity-pulse 11s linear infinite alternate; }
+  -webkit-animation: rotate-bg-2d-2 5.5s linear infinite, opacity-pulse 11s linear infinite alternate;
+          animation: rotate-bg-2d-2 5.5s linear infinite, opacity-pulse 11s linear infinite alternate; }
 
 .dot {
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
   transition: all .3s ease;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   background-position: 50% 50%;
-  animation: rotate-bg-2d 0.3s linear infinite;
+  -webkit-animation: rotate-bg-2d 0.3s linear infinite;
+          animation: rotate-bg-2d 0.3s linear infinite;
   height: 20px;
   width: 20px;
   background-size: contain;
   background-image: url(/img/dot.png);
-  filter: hue-rotate(114deg); }
+  -webkit-filter: hue-rotate(114deg);
+          filter: hue-rotate(114deg); }
 
 .glow {
   mix-blend-mode: screen;
@@ -107,20 +138,25 @@
   background-position: 50% 50%;
   background-size: var(--zoom);
   opacity: 1;
-  animation: glow-pulse 3s linear infinite alternate; }
+  -webkit-animation: glow-pulse 3s linear infinite alternate;
+          animation: glow-pulse 3s linear infinite alternate; }
 
 .jewels {
   background-image: var(--gem-glow-fx);
   mix-blend-mode: color-dodge;
   mix-blend-mode: plus-lighter;
-  filter: brightness(3);
-  animation: opacity-pulse 5s ease-in infinite; }
+  -webkit-filter: brightness(3);
+          filter: brightness(3);
+  -webkit-animation: opacity-pulse 5s ease-in infinite;
+          animation: opacity-pulse 5s ease-in infinite; }
 
 .mist-glow {
   background-image: var(--mist-glow);
   mix-blend-mode: color-burn;
-  filter: brightness(1.6);
-  animation: opacity-pulse 10s linear infinite alternate; }
+  -webkit-filter: brightness(1.6);
+          filter: brightness(1.6);
+  -webkit-animation: opacity-pulse 10s linear infinite alternate;
+          animation: opacity-pulse 10s linear infinite alternate; }
 
 .mist, .mist2, .mist3 {
   background-image: var(--mist);
@@ -131,18 +167,25 @@
 .mist {
   background-position-x: -1726px;
   opacity: 0.6;
-  transform: scaleX(-1);
-  animation: mist1 90s linear infinite; }
+  -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+          transform: scaleX(-1);
+  -webkit-animation: mist1 90s linear infinite;
+          animation: mist1 90s linear infinite; }
 
 .mist2 {
-  animation: mist2 90s linear infinite;
-  animation-delay: 1s; }
+  -webkit-animation: mist2 90s linear infinite;
+          animation: mist2 90s linear infinite;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s; }
 
 .mist3 {
   mix-blend-mode: screen;
   mix-blend-mode: plus-lighter;
-  animation: mist3 70s linear infinite;
-  animation-delay: 2s;
+  -webkit-animation: mist3 70s linear infinite;
+          animation: mist3 70s linear infinite;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
   opacity: 0; }
 
 .sky {
@@ -166,14 +209,19 @@
 
 .one {
   background-image: var(--starsone);
-  filter: brightness(0.75);
-  animation: glow-pulse 0.75s ease-in-out infinite; }
+  -webkit-filter: brightness(0.75);
+          filter: brightness(0.75);
+  -webkit-animation: glow-pulse 0.75s ease-in-out infinite;
+          animation: glow-pulse 0.75s ease-in-out infinite; }
 
 .two {
   background-image: var(--starstwo);
-  filter: brightness(0.5);
-  animation-delay: 0.35s;
-  animation: glow-pulse .5s linear infinite; }
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+  -webkit-animation: glow-pulse .5s linear infinite;
+          animation: glow-pulse .5s linear infinite; }
 
 .card {
   width: 71.5vw;
@@ -183,10 +231,16 @@
   margin: 20px;
   overflow: hidden;
   z-index: 10;
-  touch-action: none;
+  -ms-touch-action: none;
+      touch-action: none;
   border-radius: 5% / 3.5%;
-  box-shadow: -5px -5px 5px -5px var(--color1), 5px 5px 5px -5px var(--color2), -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent, 0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: -5px -5px 5px -5px var(--color1), 5px 5px 5px -5px var(--color2), -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent, 0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+          box-shadow: -5px -5px 5px -5px var(--color1), 5px 5px 5px -5px var(--color2), -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent, 0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+  -webkit-transition: -webkit-transform 0.5s ease, -webkit-box-shadow 0.2s ease;
+  transition: -webkit-transform 0.5s ease, -webkit-box-shadow 0.2s ease;
+  -o-transition: transform 0.5s ease, box-shadow 0.2s ease;
   transition: transform 0.5s ease, box-shadow 0.2s ease;
+  transition: transform 0.5s ease, box-shadow 0.2s ease, -webkit-transform 0.5s ease, -webkit-box-shadow 0.2s ease;
   will-change: transform, filter;
   background-color: #0407127c;
   background-image: var(--front);
@@ -200,7 +254,8 @@
     max-height: 700px; } }
 
 .card:hover {
-  box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1), 7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5); }
+  -webkit-box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1), 7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+          box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1), 7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5); }
 
 .card.nida {
   --color1: var(--nida1);
@@ -218,14 +273,18 @@
   background-repeat: no-repeat;
   opacity: .5;
   mix-blend-mode: color-dodge;
+  -webkit-transition: all .33s ease;
+  -o-transition: all .33s ease;
   transition: all .33s ease; }
 
 .card:before {
   background-position: 50% 50%;
   background-size: 300% 300%;
+  background-image: -o-linear-gradient(335deg, transparent 0%, var(--color1) 25%, transparent 47%, transparent 53%, var(--color2) 75%, transparent 100%);
   background-image: linear-gradient(115deg, transparent 0%, var(--color1) 25%, transparent 47%, transparent 53%, var(--color2) 75%, transparent 100%);
   opacity: .5;
-  filter: brightness(0.5) contrast(1);
+  -webkit-filter: brightness(0.5) contrast(1);
+          filter: brightness(0.5) contrast(1);
   z-index: 1; }
 
 .card:after {
@@ -238,29 +297,40 @@
   mask-image: var(--maskimage);
   mask-size: cover;
   mask-repeat: no-repeat;
+  background-image: url(/img/sparkle.gif), var(--space), -o-linear-gradient(325deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
   background-image: url(/img/sparkle.gif), var(--space), linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
   background-position: 50% 50%;
   background-size: var(--zoom);
   background-blend-mode: overlay;
   z-index: 2;
-  filter: brightness(1) contrast(1);
+  -webkit-filter: brightness(1) contrast(1);
+          filter: brightness(1) contrast(1);
+  -webkit-transition: all .33s ease;
+  -o-transition: all .33s ease;
   transition: all .33s ease;
   mix-blend-mode: screen;
   opacity: .95; }
 
 .card.active:after,
 .card:hover:after {
-  filter: brightness(1) contrast(1);
+  -webkit-filter: brightness(1) contrast(1);
+          filter: brightness(1) contrast(1);
   opacity: 1; }
 
 .card.active,
 .card:hover {
-  animation: none;
-  transition: box-shadow 0.1s ease-out; }
+  -webkit-animation: none;
+          animation: none;
+  -webkit-transition: -webkit-box-shadow 0.1s ease-out;
+  transition: -webkit-box-shadow 0.1s ease-out;
+  -o-transition: box-shadow 0.1s ease-out;
+  transition: box-shadow 0.1s ease-out;
+  transition: box-shadow 0.1s ease-out, -webkit-box-shadow 0.1s ease-out; }
 
 .card.active:before,
 .card:hover:before {
-  animation: none;
+  -webkit-animation: none;
+          animation: none;
   -webkit-mask-position: 50% 50%;
   -webkit-mask-image: var(--hovermaskimage);
   -webkit-mask-size: cover;
@@ -269,31 +339,47 @@
   mask-image: var(--hovermaskimage);
   mask-size: cover;
   mask-repeat: no-repeat;
+  background-image: -o-linear-gradient(340deg, transparent 25%, var(--color1) 48%, var(--color2) 52%, transparent 75%);
   background-image: linear-gradient(110deg, transparent 25%, var(--color1) 48%, var(--color2) 52%, transparent 75%);
   background-position: 50% 50%;
   background-size: 250% 250%;
   opacity: .88;
-  filter: brightness(0.66) contrast(1.33);
+  -webkit-filter: brightness(0.66) contrast(1.33);
+          filter: brightness(0.66) contrast(1.33);
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none; }
 
 .card.active:before,
 .card:hover:before,
 .card.active:after,
 .card:hover:after {
-  animation: none;
+  -webkit-animation: none;
+          animation: none;
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none; }
 
 .card.animated {
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
-  animation: holoCard 12s ease 0s 1; }
+  -webkit-animation: holoCard 12s ease 0s 1;
+          animation: holoCard 12s ease 0s 1; }
 
 .card.animated:before {
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
-  animation: holoGradient 12s ease 0s 1; }
+  -webkit-animation: holoGradient 12s ease 0s 1;
+          animation: holoGradient 12s ease 0s 1; }
 
 .card.animated:after {
+  -webkit-transition: none;
+  -o-transition: none;
   transition: none;
-  animation: holoSparkle 12s ease 0s 1; }
+  -webkit-animation: holoSparkle 12s ease 0s 1;
+          animation: holoSparkle 12s ease 0s 1; }
 
 .demo .card {
   background-image: var(--back);
@@ -308,15 +394,18 @@
 .demo .card:nth-of-type(3) {
   width: 20vh;
   height: 27.5vh;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), 0 25px 15px -10px rgba(0, 0, 0, 0.5);
-  animation: none; }
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), 0 25px 15px -10px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), 0 25px 15px -10px rgba(0, 0, 0, 0.5);
+  -webkit-animation: none;
+          animation: none; }
 
 .demo .card:nth-of-type(1):before, .demo .card:nth-of-type(1):after,
 .demo .card:nth-of-type(2):before,
 .demo .card:nth-of-type(2):after,
 .demo .card:nth-of-type(3):before,
 .demo .card:nth-of-type(3):after {
-  animation: none; }
+  -webkit-animation: none;
+          animation: none; }
 
 .demo .card:nth-of-type(1):before, .demo .card:nth-of-type(1):after {
   display: none; }
@@ -343,7 +432,8 @@ html, body {
   background-color: #333844;
   padding: 0;
   z-index: 1;
-  transform: translate3d(0, 0, 0.1px); }
+  -webkit-transform: translate3d(0, 0, 0.1px);
+          transform: translate3d(0, 0, 0.1px); }
 
 body {
   color: white;
@@ -364,31 +454,53 @@ p {
 
 .demo,
 .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  perspective: 2000px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-perspective: 2000px;
+          perspective: 2000px;
   position: relative;
   z-index: 1;
-  transform: translate3d(0.1px, 0.1px, 0.1px); }
+  -webkit-transform: translate3d(0.1px, 0.1px, 0.1px);
+          transform: translate3d(0.1px, 0.1px, 0.1px); }
 
 .demo {
-  flex-direction: row;
-  justify-content: center; }
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
 
 @media screen and (min-width: 600px) {
   .cards {
-    flex-direction: row; } }
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; } }
 
 .cards .card:nth-child(2), .cards .card:nth-child(2):before, .cards .card:nth-child(2):after {
-  animation-delay: 0.25s; }
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s; }
 
 .cards .card:nth-child(3), .cards .card:nth-child(3):before, .cards .card:nth-child(3):after {
-  animation-delay: 0.5s; }
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s; }
 
 .cards .card:nth-child(4), .cards .card:nth-child(4):before, .cards .card:nth-child(4):after {
-  animation-delay: 0.75s; }
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s; }
 
 p {
   font-weight: 400;

@@ -62,6 +62,10 @@
   background-size: var(--zoom);
   background-repeat: no-repeat;
 
+  -webkit-mask-position: 50% 50%;
+  -webkit-mask-image: var(--maskimage);
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
   mask-position: 50% 50%;
   mask-image: var(--maskimage);
   mask-size: cover;
