@@ -32,15 +32,24 @@ $cards
     // math for gradient / background positions
     var lp = (50+(px - 50)/1.5);
     var tp = (50+(py - 50)/1.5);
-    var px_spark = (50+(px - 50)/-2);
-    var py_spark = (50+(py - 50)/-2.5);
+    var px_spark = (50+(px - 50)/-1.1);
+    var py_spark = (50+(py - 50)/-2);
     var p_opc = 20+(Math.abs(pa)*1.5);
     var ty = ((tp - 50)/2) * -1;
     var tx = ((lp - 50)/1.5) * .5;
+
+    //black hole
+    var top = (parseFloat($(".black-hole").css("top"))/h)*100;
+    var left = (10/w)*100;
+
+    var bgX_pos = 10 + (((lp - 50)/1.5) * 0.6);
+    var bgY_pos = 48.6 - (((tp - 50)/2) * -0.32);
   
     // css to apply for active card
     var grad_pos = `background-position: ${lp}% ${tp}%;`
     var sprk_pos = `background-position: ${px_spark}% ${py_spark}%;`
+    var axis_pos = `transform-origin: ${bgX_pos}% ${bgY_pos}%;`
+    var baxis_pos = `top:${bgY_pos}%; left:${bgX_pos}%;`
 
     //var opc = `opacity: ${p_opc/100};`
     var tf = `transform: rotateX(${ty*-1}deg) rotateY(${tx*-1}deg)`
@@ -49,9 +58,13 @@ $cards
     var style = `
       .card:hover:before { ${grad_pos} }  /* gradient */
       .card:hover:after { ${sprk_pos} }   /* sparkles */ 
-      .card:hover .sky { ${sprk_pos} }   /* sparkles */ 
+      .card:hover .background { ${sprk_pos} }   /* positions mask */
+      .black-hole, .dot { ${baxis_pos} }
     `
     // set / apply css class and style
+
+    var xPos = $(".background").css("background-position");
+
     $cards.removeClass("active");
     $card.removeClass("animated");
     $card.attr( "style", tf );

@@ -5,7 +5,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass --watch ./ -o ./",
+    "scss": "node-sass --watch ./ -o ./ ",
     "start": "npx parcel index.html",
     "prebuild-dev": "shx rm -rf dist/*",
     "build-dev": "npx parcel build ./index.html --no-optimize --public-url ./",
