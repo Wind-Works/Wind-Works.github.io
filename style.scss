@@ -6,8 +6,10 @@
   --color2: rgba(255, 0, 230, 0.418);
 
   //card glow
-  --nida1: #5653ff;
+  --nida1: #ff006a8c;
   --nida2: rgba(255, 0, 230, 0.418); //#a79d66;
+  //--nida1: #5653ff;
+  //--nida2: rgba(255, 0, 230, 0.418); //#a79d66;
 
   //nidalee
   --nidalee: url(/img/nidalee.png);
@@ -22,6 +24,7 @@
   //foreground
   --mist: url(/img/mist.png);
   --mist-glow: url(/img/smoke-glow.png);
+  --border: url(/img/border.png);
 
   //background
   --zoom: 130%;
@@ -38,7 +41,8 @@
 //add first hover delay?
 //resizable div to 'peel off' hair-mask?
 //mask out moon and planets from sparkle gif
-//twinkling stars, nebula, black hole, border -> finish
+//warp sky around black hole a bit
+//twinkling stars, lightning nebula fx, glitter fx on clothing (fix gem-glow), clouds -> finish
 
 .foreground {
   position: absolute;
@@ -76,8 +80,37 @@
 }
 
 .card:hover .background,
-.card:hover .black-hole {
+.card:hover .black-hole,
+.card:hover + .border {
   transition: none;
+}
+
+.border {
+  height: 747px;
+  width: 575px;
+  opacity: 0.9;
+  /*height: 771px;
+  width: 593px;*/
+  background-image: var(--border);
+  transition: all 0.5s ease;
+  pointer-events: none;
+  position: absolute;
+  background-repeat: no-repeat;
+  //filter: drop-shadow(2px 4px 6px rgb(80, 0, 80));
+  background-size: contain;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+}
+
+.border p {
+  top: 90px;
+  position: relative;
+  background: none;
+  font-family: ui-serif;
+  font-style: italic;
+  color: #ffd700; //gold
 }
 
 .black-hole {
@@ -99,26 +132,26 @@
 .disc {
   background-image: var(--disc);
   background-size: cover;
-  animation: rotate-bg-2d 0.2s linear infinite, opacity-pulse 5s linear infinite alternate;
+  animation: rotate-bg-2d 0.2s linear infinite, lingering-opacity-pulse 5s linear infinite alternate;
   //transform-origin: 10% 48.8%;//333px;
 }
 
 .d2 {
   height: 55px;
   width: 55px;
-  animation: rotate-bg-2d 0.65s linear infinite, opacity-pulse 6s linear infinite alternate;
+  animation: rotate-bg-2d 0.65s linear infinite, lingering-opacity-pulse 6s linear infinite alternate;
 }
 
 .d3 {
   height: 80px;
   width: 80px;
-  animation: rotate-bg-2d 0.95s linear infinite, opacity-pulse 8s linear infinite alternate;
+  animation: rotate-bg-2d 0.95s linear infinite, lingering-opacity-pulse 8s linear infinite alternate;
 }
 
 .d4 {
   height: 100px;
   width: 100px;
-  animation: rotate-bg-2d 2.5s linear infinite, opacity-pulse 11s linear infinite alternate;
+  animation: rotate-bg-2d 2.5s linear infinite, lingering-opacity-pulse 11s linear infinite alternate;
 }
 
 .cloud {
@@ -126,11 +159,11 @@
   height: 231px;
   width: 231px;
   background-image: var(--disc-cloud);
-  animation: rotate-bg-2d 5.5s linear infinite, opacity-pulse 11s linear infinite alternate;
+  animation: rotate-bg-2d 5.5s linear infinite, lingering-opacity-pulse 11s linear infinite alternate;
 }
 
 .c2 {
-  animation: rotate-bg-2d-2 5.5s linear infinite, opacity-pulse 11s linear infinite alternate;
+  animation: rotate-bg-2d-2 5.5s linear infinite, lingering-opacity-pulse 11s linear infinite alternate;
 }
 
 .dot {
@@ -158,15 +191,15 @@
   background-image: var(--gem-glow-fx);
   mix-blend-mode: color-dodge;
   mix-blend-mode: plus-lighter;
-  filter: brightness(3);
-  animation: opacity-pulse 5s ease-in infinite;
+  filter: brightness(2.5);
+  animation: opacity-pulse 5s linear infinite alternate;
 }
 
 .mist-glow {
   background-image: var(--mist-glow);
   mix-blend-mode: color-burn; //overlay;
-  filter: brightness(1.6);
-  animation: opacity-pulse 10s linear infinite alternate;
+  filter: brightness(1.3);
+  animation: lingering-opacity-pulse 10s linear infinite alternate;
 }
 
 .mist, .mist2, .mist3 {
@@ -178,7 +211,7 @@
 
 .mist {
   background-position-x: (-1726px);
-  opacity: 0.6;
+  opacity: 0.5;
   transform: scaleX(-1);
   animation: mist1 90s linear infinite;
 }
@@ -490,6 +523,7 @@ p {
 @media screen and (min-width: 600px) {
   .cards {
     flex-direction: row;
+    height: 800px;
   }
 }
 

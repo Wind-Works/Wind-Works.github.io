@@ -9,6 +9,7 @@
 var x;
 var $cards = $(".card");
 var $style = $(".hover");
+var $border = $(".border");
 
 $cards
   .on("mousemove touchmove", function(e) { 
@@ -39,20 +40,22 @@ $cards
     var tx = ((lp - 50)/1.5) * .5;
 
     //black hole
-    var top = (parseFloat($(".black-hole").css("top"))/h)*100;
-    var left = (10/w)*100;
-
     var bgX_pos = 10 + (((lp - 50)/1.5) * 0.6);
     var bgY_pos = 48.6 - (((tp - 50)/2) * -0.32);
+
+    //border
+    var border_X = (-tx*0.15) - 50;
+    var border_Y = (ty*0.08) - 50;
   
     // css to apply for active card
     var grad_pos = `background-position: ${lp}% ${tp}%;`
     var sprk_pos = `background-position: ${px_spark}% ${py_spark}%;`
-    var axis_pos = `transform-origin: ${bgX_pos}% ${bgY_pos}%;`
+    //var axis_pos = `transform-origin: ${bgX_pos}% ${bgY_pos}%;`
     var baxis_pos = `top:${bgY_pos}%; left:${bgX_pos}%;`
 
     //var opc = `opacity: ${p_opc/100};`
     var tf = `transform: rotateX(${ty*-1}deg) rotateY(${tx*-1}deg)`
+    var tf_border = `transform: translate(${border_X}%, ${border_Y}%) rotateX(${ty*-1}deg) rotateY(${tx*-1}deg);`
     // need to use a <style> tag for psuedo elements
     //${opc}
     var style = `
@@ -60,11 +63,9 @@ $cards
       .card:hover:after { ${sprk_pos} }   /* sparkles */ 
       .card:hover .background { ${sprk_pos} }   /* positions mask */
       .black-hole, .dot { ${baxis_pos} }
+      .card:hover + .border { ${tf_border} filter: drop-shadow(2px 4px 6px #500050) brightness(1.1); opacity: 1;}
     `
     // set / apply css class and style
-
-    var xPos = $(".background").css("background-position");
-
     $cards.removeClass("active");
     $card.removeClass("animated");
     $card.attr( "style", tf );
