@@ -12,7 +12,7 @@
   //--nida2: rgba(255, 0, 230, 0.418); //#a79d66;
 
   //nidalee
-  --nidalee: url(/img/nidalee.png);
+  --nidalee: url(/img/nidalee2.png);
   --gem-glow-fx: url(/img/glow.png);
 
   //masks
@@ -25,6 +25,7 @@
   --mist: url(/img/mist.png);
   --mist-glow: url(/img/smoke-glow.png);
   --border: url(/img/border.png);
+  --border2: url(/img/border2.png);
 
   //background
   --zoom: 130%;
@@ -42,7 +43,12 @@
 //resizable div to 'peel off' hair-mask?
 //mask out moon and planets from sparkle gif
 //warp sky around black hole a bit
-//twinkling stars, lightning nebula fx, glitter fx on clothing (fix gem-glow), clouds -> finish
+//twinkling stars, lightning nebula fx, glitter fx on clothing (fix gem-glow), clouds, hair hue-shift animation -> finish
+//one star set rotates?
+
+//border radius and card:before dont work on mobile well
+
+//clear css files and run 'npm run scss' before inputting to prefixer
 
 .foreground {
   position: absolute;
@@ -85,10 +91,13 @@
   transition: none;
 }
 
+.card:hover + .border {
+  background-image: var(--border2);
+}
+
 .border {
   height: 747px;
   width: 575px;
-  opacity: 0.9;
   /*height: 771px;
   width: 593px;*/
   background-image: var(--border);
@@ -110,6 +119,7 @@
   background: none;
   font-family: ui-serif;
   font-style: italic;
+  //filter: brightness(1.2);
   color: #ffd700; //gold
 }
 
@@ -133,7 +143,6 @@
   background-image: var(--disc);
   background-size: cover;
   animation: rotate-bg-2d 0.2s linear infinite, lingering-opacity-pulse 5s linear infinite alternate;
-  //transform-origin: 10% 48.8%;//333px;
 }
 
 .d2 {
@@ -191,7 +200,7 @@
   background-image: var(--gem-glow-fx);
   mix-blend-mode: color-dodge;
   mix-blend-mode: plus-lighter;
-  filter: brightness(2.5);
+  filter: brightness(2);
   animation: opacity-pulse 5s linear infinite alternate;
 }
 
@@ -263,9 +272,6 @@
   animation: glow-pulse .5s linear infinite;
 }
 
-//transform-origin: 10.6% 48.5%;//333px;
-//animation: rotate-bg 1s linear infinite;
-
 .card {
   width: 71.5vw;
   height: 100vw;
@@ -304,7 +310,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  //transform-origin: 0px 293px;
 }
 
 .card:hover {
@@ -323,7 +328,7 @@
   --front: var(--nidalee);
 }
 
-.card:before,
+//.card:before,
 .card:after {
   content: "";
   position: absolute;
@@ -337,7 +342,7 @@
   transition: all .33s ease;
 }
 
-.card:before {
+/*.card:before {
   background-position: 50% 50%;
   background-size: 300% 300%;
   background-image: linear-gradient(
@@ -352,7 +357,7 @@
   opacity: .5;
   filter: brightness(.5) contrast(1);
   z-index: 1;
-}
+}*/
 
 .card:after {
   opacity: 1;
@@ -400,6 +405,8 @@
   mask-image: var(--hovermaskimage);
   mask-size: cover;
   mask-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, 0.24);
+  border-radius: 5% / 3.5%;
   background-image: linear-gradient(
     110deg,
     transparent 25%,

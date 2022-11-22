@@ -17,7 +17,8 @@ $cards
     var pos = [e.offsetX,e.offsetY];
     e.preventDefault();
     if ( e.type === "touchmove" ) {
-      pos = [ e.touches[0].clientX, e.touches[0].clientY ];
+      var rect = e.target.getBoundingClientRect();
+      pos = [ e.targetTouches[0].pageX - rect.left, e.targetTouches[0].pageY - rect.top ];
     }
     var $card = $(this);
     // math for mouse position
@@ -54,7 +55,7 @@ $cards
     var baxis_pos = `top:${bgY_pos}%; left:${bgX_pos}%;`
 
     //var opc = `opacity: ${p_opc/100};`
-    var tf = `transform: rotateX(${ty*-1}deg) rotateY(${tx*-1}deg)`
+    var tf = ` transform: rotateX(${ty*-1}deg) rotateY(${tx*-1}deg)`
     var tf_border = `transform: translate(${border_X}%, ${border_Y}%) rotateX(${ty*-1}deg) rotateY(${tx*-1}deg);`
     // need to use a <style> tag for psuedo elements
     //${opc}
@@ -63,13 +64,17 @@ $cards
       .card:hover:after { ${sprk_pos} }   /* sparkles */ 
       .card:hover .background { ${sprk_pos} }   /* positions mask */
       .black-hole, .dot { ${baxis_pos} }
-      .card:hover + .border { ${tf_border} filter: drop-shadow(2px 4px 6px #500050) brightness(1.1); opacity: 1;}
+      .card:hover + .border { ${tf_border} filter: drop-shadow(2px 4px 6px #ffd7002f) brightness(1.1); opacity: 1; text-shadow: 0px 0px 5px #ffd7009f;}
     `
+    //var string = "x " + lp + " y " + tp;
+    //ffd700
+    //500050
     // set / apply css class and style
     $cards.removeClass("active");
     $card.removeClass("animated");
     $card.attr( "style", tf );
     $style.html(style);
+    //$("#text").html(string);
     if ( e.type === "touchmove" ) {
       return false; 
     }
@@ -79,6 +84,7 @@ $cards
     var $card = $(this);
     $style.html("");
     $card.removeAttr("style");
+    $border.removeAttr("style");
     x = setTimeout(function() {
       //$card.addClass("animated");
     },2500);
