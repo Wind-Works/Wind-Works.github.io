@@ -1,3 +1,31 @@
+@keyframes move-background {
+  0% {
+    mask-position: 0px 0px; }
+  100% {
+    mask-position: 1000px 0px; } }
+
+@keyframes move-clouds {
+  0% {
+    background-position: 0px 0px; }
+  100% {
+    background-position: -1000px 0px; } }
+
+@keyframes brightness-flicker {
+  0% {
+    filter: brightness(2) saturate(2); }
+  25% {
+    filter: brightness(3) saturate(2); }
+  29% {
+    filter: brightness(1.5) saturate(2); }
+  50% {
+    filter: brightness(2.5) saturate(2); }
+  56% {
+    filter: brightness(1.5) saturate(2); }
+  75% {
+    filter: brightness(3) saturate(2); }
+  100% {
+    filter: brightness(2) saturate(2); } }
+
 @keyframes mist1 {
   0% {
     background-position-x: 0px;
@@ -42,7 +70,7 @@
 
 @keyframes opacity-pulse {
   0% {
-    opacity: 0.5; }
+    opacity: 0.7; }
   100% {
     opacity: 1; } }
 
