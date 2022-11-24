@@ -18,39 +18,43 @@
 
   //masks
   //looks really cool --maskimage: url(/img/hover-mask-halfhair.png);
-  --maskimage: url(/img/sky-mask.png);
+  --maskimage: url(/img/sky-mask.webp);
   //this is for the glow that follows the mouse
   --hovermaskimage: url(/img/hover-mask-throughhair.png);
   --starmask: url(/img/starmask.png);
-  --sparkle-mask: url(/img/sparkle-mask.png);
+  --sparkle-mask: url(/img/sparkle-mask.webp);
+  --flare-mask: url(/img/flare-mask.png);
 
   //foreground
-  --mist: url(/img/mist.png);
+  --mist: url(/img/mist.webp);
   --mist-glow: url(/img/smoke-glow.png);
   --sparkle: url(/img/sparkle.gif);
-  --border: url(/img/border.png);
-  --border2: url(/img/border2.png);
+  --border: url(/img/border.webp);
+  --border2: url(/img/border2.webp);
 
   //background
   --zoom: 130%;
-  --space: url(/img/sky2.png);
+  --space: url(/img/sky2.webp);
   --space-overlay: url(/img/space-overlay.png);
   --starsone: url(/img/starsone.png);
   --starstwo: url(/img/starstwo.png);
   --nebula-glow: url(/img/nebula-glow.png);
-  --atmosphere: url(/img/atmosphere.png);
+  --atmosphere: url(/img/atmosphere.webp);
   --clouds:url(/img/clouds.png);
+  --flare: url(/img/flare.png);
 
   //black hole
   --glow: url(/img/black-hole-glow.png);
   --disc: url(/img/ring-disc.png);
-  --disc-cloud: url(/img/disc-cloud.png);
+  --disc-cloud: url(/img/disc-cloud.webp);
 }
 
 //resizable div to 'peel off' hair-mask?
 //star shine -> finish
 
 //border radius and card:before dont work on mobile well
+//switch background (toggle light/dark), link to github/credits etc, formatting improvements, readme with resources linked, cleanup
+//fix mist opacity/animations
 
 //clear css files and run 'npm run scss' before inputting to prefixer
 
@@ -103,6 +107,36 @@
   opacity: 0.8;
   filter: brightness(2);
   animation: brightness-flicker 7s linear infinite;
+}
+
+.flare {
+  background-image: var(--flare);
+  background-size: contain;
+  mix-blend-mode: plus-lighter;
+  position: absolute;
+  transition: all 0.3s ease;
+  z-index: 5;
+  will-change: background-position;
+  opacity: 0.8;
+  filter: brightness(2);
+}
+
+.flareone {
+  left: 33.5%;
+  top: 36.5%;
+  height: 100px;
+  width: 100px;
+  animation: opacity-pulse-2 3s ease-in-out infinite alternate;
+}
+
+.flaretwo {
+  top: 20%;
+  left: 31%;
+  height: 100px;
+  width: 100px;
+  animation: opacity-pulse-2 3s ease-in-out infinite alternate;
+  animation-delay: 1.2s;
+  filter: hue-rotate(60deg);
 }
 
 .atmosphere {
@@ -167,7 +201,8 @@
 .card:hover .black-hole,
 .card:hover + .border,
 .card:hover .nebula,
-.card:hover .stars {
+.card:hover .stars,
+.card:hover .flare {
   transition: none;
 }
 
@@ -306,13 +341,13 @@
 .mist, .mist2, .mist3 {
   background-image: var(--mist);
   width: 2589px;
-  opacity: 0.1;
+  opacity: 0.2;
   mix-blend-mode: screen;
 }
 
 .mist {
   background-position-x: (-1726px);
-  opacity: 0.3;
+  opacity: 0.4;
   transform: scaleX(-1);
   animation: mist1 90s linear infinite;
 }

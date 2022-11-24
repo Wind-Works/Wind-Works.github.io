@@ -74,6 +74,20 @@
   100% {
     opacity: 1; } }
 
+@keyframes opacity-pulse-2 {
+  0% {
+    filter: brightness(0);
+    opacity: 0; }
+  85% {
+    filter: brightness(0.5);
+    opacity: 0.1; }
+  90% {
+    filter: brightness(4);
+    opacity: 1; }
+  100% {
+    filter: brightness(5);
+    opacity: 1; } }
+
 @keyframes lingering-opacity-pulse {
   0% {
     opacity: 0.2; }

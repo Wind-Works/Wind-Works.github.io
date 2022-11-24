@@ -40,13 +40,20 @@ $cards
     var ty = ((tp - 50)/2) * -1;
     var tx = ((lp - 50)/1.5) * .5;
 
+    var x_track = (((lp - 50)/1.5) * 0.6);
+    var y_track = (((tp - 50)/2) * -0.32)
+
     //black hole
-    var bgX_pos = 10 + (((lp - 50)/1.5) * 0.6);
-    var bgY_pos = 48.6 - (((tp - 50)/2) * -0.32);
+    var bgX_pos = 10 + x_track;
+    var bgY_pos = 48.6 - y_track;
 
     //nebula
-    var nX_pos = 50 + (((lp - 50)/1.5) * 0.6);
-    var nY_pos = 11.5 - (((tp - 50)/2) * -0.32);
+    var nX_pos = 50 + x_track;
+    var nY_pos = 11.5 - y_track;
+
+    //flare 1
+    var f1X_pos = 33.5 + x_track;
+    var f1Y_pos = 36.5 - y_track;
 
     //border
     var border_X = (-tx*0.15) - 50;
@@ -58,6 +65,7 @@ $cards
     //var axis_pos = `transform-origin: ${bgX_pos}% ${bgY_pos}%;`
     var baxis_pos = `top:${bgY_pos}%; left:${bgX_pos}%;`
     var naxis_pos = `top:${nY_pos}%; left:${nX_pos}%;`
+    var f1axis_pos = `top:${f1Y_pos}%; left:${f1X_pos}%;`
 
     //var opc = `opacity: ${p_opc/100};`
     var tf = ` transform: rotateX(${ty*-1}deg) rotateY(${tx*-1}deg)`
@@ -75,6 +83,7 @@ $cards
       .card:hover .jewels { ${gems_glow} }
       .black-hole, .dot { ${baxis_pos} }
       .nebula { ${naxis_pos} }
+      .flare { ${f1axis_pos} }
       .card:hover + .border { ${tf_border} filter: drop-shadow(2px 4px 6px #ffd7002f) brightness(1.1); opacity: 1; text-shadow: 0px 0px 5px #ffd7009f;}
     `
     //var string = "x " + lp + " y " + tp;
