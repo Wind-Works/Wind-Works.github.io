@@ -2,52 +2,72 @@
 <html lang="en">
     <head>
         <title>Nidalee</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device.width, initial-scale=1.0">
         <!--scss for local, css switch and refresh for gh pages-->
         <link rel="stylesheet" href="style.css">
+        <link rel="preload" fetchpriority="high" as="image" href="/img/nidalee.png" type="image/webp">
+        <link rel="preload" fetchpriority="high" as="image" href="/img/mist.webp" type="image/webp">
     </head>
 
 <body>
     <h1>Nidalee</h1>
     <section class="cards">
       <style class="hover"></style>
-      <div class="card nida"> 
-       <div class="foreground mist"></div>
-        <div class="foreground mist2"></div>
-        <div class="foreground mist3"></div>
-        <div class="foreground mist-glow"></div>
-        <div class="foreground sparkle"></div>
-        <div class="foreground hair-color-fx"></div>
-        <div class="foreground jewels"></div>
-        <div class="background">
-          <div class="background stars"></div>
-          <div class="background stars starsone"></div>
-          <div class="background stars starsone"></div>
-          <div class="background stars starstwo"></div>
-          <div class="black-hole disc"></div>
-          <div class="black-hole disc"></div>
-          <div class="black-hole disc d2"></div>
-          <div class="black-hole disc d2"></div>
-          <div class="black-hole disc d3"></div>
-          <div class="black-hole disc d4"></div>
-          <div class="black-hole disc cloud"></div>
-          <div class="black-hole disc cloud"></div>
-          <div class="black-hole disc cloud c2"></div>
-          <div class="black-hole disc cloud c2"></div>
-          <div class="nebula"></div>
-          <div class="background glow"></div>
-          <div class="background glow"></div>
-          <div class="background atmosphere"></div>
-          <div class="flare flareone"></div>
-          <div class="flare flaretwo"></div>
-          <div class="clouds"></div>
-          <div class="clouds cloud2"></div>-->
-          <div class="black-hole dot"></div>
+      <div class="card nida" id="nida">
+
+        <div class="foreground-mist">
+          <img class="mist" alt="moody misty effects" width="2589" height="910" src="img/mist.webp" />
+          <img class="mist2" alt="moody misty effects" width="2589" height="910" src="img/mist.webp" />
+          <img class="mist3" alt="moody misty effects" width="2589" height="910" src="img/mist.webp" />
+        </div>
+
+        <div class="mist-glow"></div>
+        <div class="sparkle"></div>
+        <div class="hair-color-fx"></div>
+        <div class="jewels"></div>
+  
+        <div class="background-masker">
+          <div class="background-wrapper">
+            <img class="black-hole disc d1" alt="photon sphere" width="50" height="50" src="/img/ring-disc.png"></img>
+            <img class="black-hole disc d1" alt="photon sphere" width="50" height="50" src="/img/ring-disc.png"></img>
+            <img class="black-hole disc d2" alt="slingshot" width="55" height="55" src="/img/ring-disc.png"></img>
+            <img class="black-hole disc d2" alt="slingshot" width="55" height="55" src="/img/ring-disc.png"></img>
+            <img class="black-hole disc d3" alt="spiral" width="80" height="80" src="/img/ring-disc.png"></img>
+            <img class="black-hole disc d4" alt="spiral" width="100" height="100" src="/img/ring-disc.png"></img>
+
+            <img class="black-hole disc cloud c1" alt="high density zone one" width="231" height="231" src="/img/disc-cloud.webp"></img>
+            <img class="black-hole disc cloud c1" alt="high density zone one" width="231" height="231" src="/img/disc-cloud.webp"></img>
+            <img class="black-hole disc cloud c2" alt="high density zone two" width="231" height="231" src="/img/disc-cloud.webp"></img>
+            <img class="black-hole disc cloud c2" alt="high density zone two" width="231" height="231" src="/img/disc-cloud.webp"></img>
+  
+            <img class="nebula" alt="blue nebula glow" width="139" height="150" src="/img/nebula-glow.png"></img>
+            <!--midground clouds-->
+            <div class="clouds"></div>
+            <div class="clouds cloud2"></div>    
+          </div>
+          <!--black hole glow-->
+          <div class="glow"></div>
+          <div class="glow"></div>
+          <div class="star-wrapper">
+            <div class="stars"></div>
+            <div class="stars starsone"></div>
+            <div class="stars starsone"></div>
+            <div class="stars starstwo"></div>
+            <div class="flare flareone"></div>
+            <div class="flare flaretwo"></div>
+            <div class="flare flarethree"></div>
+            <div class="flare flarefour"></div>
+          </div>
+          <!--<div class="atmosphere"></div>-->
         </div>
       </div>
-      <div class="border">
+      <div class="border-wrapper">
         <p id="text">song of the crescent moon</p>
+        <img class="border" alt="fancy border" src="img/border.webp" />
+        <img class="border2" alt="fancy border lit" src="img/border2.webp" />
       </div>
     </section>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script src="script.js"></script> 
+    <script src="script.js"></script> 
 </body>
 </html>
