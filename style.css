@@ -4,6 +4,7 @@
 * Autoprefixer: v10.4.7
 * Browsers: last 4 version
 */
+@import url(/animations.css);
 :root {
   --xPos: 50%;
   --yPos: 50%;
