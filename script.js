@@ -1,111 +1,89 @@
-/*
+var r = document.querySelector(':root');
+var nida = document.getElementById("nida");
 
-  using 
-    - an animated gif of sparkles.
-    - an animated gradient as a holo effect.
-    - color-dodge mix blend mode
-  
-*/
-var x;
-var $cards = $(".card");
-var $style = $(".hover");
-var $border = $(".border");
+nida.addEventListener('mousemove', moveEvt);
+nida.addEventListener('touchmove', moveEvt, {passive: true});
 
-$cards
-  .on("mousemove touchmove", function(e) { 
-    // normalise touch/mouse
-    var pos = [e.offsetX,e.offsetY];
-    e.preventDefault();
-    if ( e.type === "touchmove" ) {
-      var rect = e.target.getBoundingClientRect();
-      pos = [ e.targetTouches[0].pageX - rect.left, e.targetTouches[0].pageY - rect.top ];
-    }
-    var $card = $(this);
-    // math for mouse position
-    var l = pos[0];
-    var t = pos[1];
-    var h = $card.height();
-    var w = $card.width();
+nida.addEventListener('mouseout', leaveEvt);
+nida.addEventListener('mouseleave', leaveEvt);
+nida.addEventListener('touchend', leaveEvt, {passive: true});
+nida.addEventListener('touchcancel', leaveEvt, {passive: true});
 
-    var px = Math.abs(Math.floor(100 / w * l)-100);
-    var py = Math.abs(Math.floor(100 / h * t)-100);
-    var pa = (50-px)+(50-py);
-  
-    // math for gradient / background positions
-    var lp = (50+(px - 50)/1.5);
-    var tp = (50+(py - 50)/1.5);
-    var px_spark = (50+(px - 50)/-1.1);
-    var py_spark = (50+(py - 50)/-2);
-    var p_opc = 20+(Math.abs(pa)*1.5);
-    var ty = ((tp - 50)/2) * -1;
-    var tx = ((lp - 50)/1.5) * .5;
+function moveEvt(e) {
+  var pos = [e.offsetX,e.offsetY];
+  e.preventDefault();
+  if ( e.type === "touchmove" ) {
+    var rect = e.target.getBoundingClientRect();
+    pos = [ e.targetTouches[0].pageX - rect.left, e.targetTouches[0].pageY - rect.top ];
+  }
+  // math for mouse position
+  var l = pos[0];
+  var t = pos[1];
+  var h = 700; //$card.height();
+  var w = 500; //$card.width();
 
-    var x_track = (((lp - 50)/1.5) * 0.6);
-    var y_track = (((tp - 50)/2) * -0.32)
+  var px = Math.abs(Math.floor(100 / w * l)-100);
+  var py = Math.abs(Math.floor(100 / h * t)-100);
+  var pa = (50-px)+(50-py);
 
-    //black hole
-    var bgX_pos = 10 + x_track;
-    var bgY_pos = 48.6 - y_track;
+  // math for gradient / background positions
+  var lp = (50+(px - 50)/1.5);
+  var tp = (50+(py - 50)/1.5);
+  var px_spark = (50+(px - 50)/-1.1);
+  var py_spark = (50+(py - 50)/-2);
+  var ty = ((tp - 50)/2) * -1;
+  var tx = ((lp - 50)/1.5) * .5;
 
-    //nebula
-    var nX_pos = 50 + x_track;
-    var nY_pos = 11.5 - y_track;
+  var x_track = (((lp - 50)/1.5) * 0.6);
+  var y_track = (((tp - 50)/2) * -0.32)
 
-    //flare 1
-    var f1X_pos = 33.5 + x_track;
-    var f1Y_pos = 36.5 - y_track;
+  //black hole
+  var bX = (((lp - 50)/1.5) * 0.6);
+  var bY = (((tp - 50)/2) * -0.32);
 
-    //border
-    var border_X = (-tx*0.15) - 50;
-    var border_Y = (ty*0.08) - 50;
-  
-    // css to apply for active card
-    var grad_pos = `background-position: ${lp}% ${tp}%;`
-    var sprk_pos = `background-position: ${px_spark}% ${py_spark}%;`
-    //var axis_pos = `transform-origin: ${bgX_pos}% ${bgY_pos}%;`
-    var baxis_pos = `top:${bgY_pos}%; left:${bgX_pos}%;`
-    var naxis_pos = `top:${nY_pos}%; left:${nX_pos}%;`
-    var f1axis_pos = `top:${f1Y_pos}%; left:${f1X_pos}%;`
+  //flare 1
+  var f1X_pos = 33.5 + x_track;
+  var f1Y_pos = 36.5 - y_track;
 
-    //var opc = `opacity: ${p_opc/100};`
-    var tf = ` transform: rotateX(${ty*-1}deg) rotateY(${tx*-1}deg)`
-    var tf_border = `transform: translate(${border_X}%, ${border_Y}%) rotateX(${ty*-1}deg) rotateY(${tx*-1}deg);`
-    var hue_rotate = `filter: hue-rotate(${pa}deg) saturate(2) opacity: 0.8;`
-    var brightness = 1.6 + (100 - py)/100;
-    var gems_glow = `filter: brightness(${brightness}) saturate(2) hue-rotate(${pa}deg);`
-    // need to use a <style> tag for psuedo elements
-    //${opc}
-    var style = `
-      .card:hover:before { ${grad_pos} }  /* gradient */
-      .card:hover:after { ${sprk_pos} }   /* sparkles */ 
-      .card:hover .background, .stars { ${sprk_pos} }   /* positions mask */
-      .card:hover .hair-color-fx { ${hue_rotate} }
-      .card:hover .jewels { ${gems_glow} }
-      .black-hole, .dot { ${baxis_pos} }
-      .nebula { ${naxis_pos} }
-      .flare { ${f1axis_pos} }
-      .card:hover + .border { ${tf_border} filter: drop-shadow(2px 4px 6px #ffd7002f) brightness(1.1); opacity: 1; text-shadow: 0px 0px 5px #ffd7009f;}
-    `
-    //var string = "x " + lp + " y " + tp;
-    //ffd700
-    //500050
-    // set / apply css class and style
-    $cards.removeClass("active");
-    $card.removeClass("animated");
-    $card.attr( "style", tf );
-    $style.html(style);
-    //$("#text").html(string);
-    if ( e.type === "touchmove" ) {
-      return false; 
-    }
-    clearTimeout(x);
-  }).on("mouseout touchend touchcancel", function() {
-    // remove css, apply custom animation on end
-    var $card = $(this);
-    $style.html("");
-    $card.removeAttr("style");
-    $border.removeAttr("style");
-    x = setTimeout(function() {
-      //$card.addClass("animated");
-    },2500);
-  });
+  //border
+  var border_X = (-tx*0.15) - 50; //-50 for 2d
+  var border_Y = (ty*0.08) - 50;
+
+  var brightness = 1.6 + (100 - py)/100;
+
+  r.style.setProperty('--xPos', `${px_spark}%`);
+  r.style.setProperty('--yPos', `${py_spark}%`);
+  r.style.setProperty('--rx', `${ty*-1}deg`);
+  r.style.setProperty('--ry', `${tx*-1}deg`);
+  r.style.setProperty('--hairHue', `${pa+180}deg`);
+  r.style.setProperty('--jwlBrightness', `${brightness}`);
+  r.style.setProperty('--jwlHue', `${pa}deg`);
+  r.style.setProperty('--cardHue', `${pa+240}deg`); //+270 aligns with glow
+  //black hole
+  r.style.setProperty('--bX', `${bX}%`);
+  r.style.setProperty('--bY', `${bY*-1}%`);
+   //nebula
+   r.style.setProperty('--nLeft', `${bX}%`);
+   r.style.setProperty('--nTop', `${bY}%`);
+  //border
+  r.style.setProperty('--bTx', `${border_X}%`);
+  r.style.setProperty('--bTy', `${border_Y}%`);
+
+  if ( e.type === "touchmove" ) {
+    return false; 
+  }
+}
+
+function leaveEvt(e) {
+  r.style.setProperty('--rx', `0deg`);
+  r.style.setProperty('--ry', `0deg`);
+  r.style.setProperty('--jwlBrightness', `1.6`);
+  r.style.setProperty('--cardHue', `0deg`);
+  r.style.setProperty('--hairHue', `0deg`);
+  r.style.setProperty('--bTx', `-50%`);
+  r.style.setProperty('--bTy', `-50%`);
+  r.style.setProperty('--bX', `0%`);
+  r.style.setProperty('--bY', `0%`); 
+  r.style.setProperty('--nLeft', `50%`);
+   r.style.setProperty('--nTop', `11.5%`);
+}
